@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Search;
+use App\Match;
 
 class User extends Authenticatable
 {
@@ -29,5 +31,38 @@ class User extends Authenticatable
 
     public function isVerified(){
         return ($this->status>0);
+    }
+
+    public function oppositeSex(){
+        if ($this->gender==1) return 0;
+        if ($this->gender==0) return 1;
+    }
+
+    public function slotFree($slot){
+        //if search exists return "search
+        //if match exists return user
+        //if not return true
+
+        $user = $this;
+        $search = Search::where('user_id', $user->id)->where('slot',$slot)->first();
+        $match = Match::where('user_id_1',$user->id)->where('slot_1',$slot)->first();
+        if($match===null){
+            $match = Match::where('user_id_2',$user->id)->where('slot_2',$slot)->first();
+        }
+
+        if ($match!=null){
+            if ($match->user_id_1 == $user->id){
+                $user_target = User::find($match->user_id_2);
+            }
+            if ($match->user_id_2 == $user->id){
+                $user_target = User::find($match->user_id_1);
+            }
+            return $user_target;
+        }
+        if ($search!=null){
+            return 'search';
+        }
+
+        return true;
     }
 }

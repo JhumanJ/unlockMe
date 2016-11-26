@@ -73,12 +73,13 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('sexual_orientation') ? ' has-error' : '' }}">
-                            <label for="sexual_orientation" class="col-md-4 control-label">Sexual Orientation</label>
+                            <label for="sexual_orientation" class="col-md-4 control-label">Interested in</label>
 
                             <div class="col-md-6">
                                 <select id="sexual_orientation" class="form-control" name="sexual_orientation" required autofocus>
                                     <option {{ old('sexual_orientation')==1?"selected":"" }} value="1">Male</option>
                                     <option {{ old('sexual_orientation')==0?"selected":"" }} value="0">Female</option>
+                                    <option {{ old('sexual_orientation')==0?"selected":"" }} value="2">Both</option>
                                 </select>
 
                                 @if ($errors->has('sexual_orientation'))

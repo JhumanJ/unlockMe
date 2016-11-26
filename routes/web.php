@@ -14,7 +14,7 @@
 Route::get('/', function () {
     if (Auth::check()) {
         if(Auth::user()->isVerified()){
-            return view('home');
+            return redirect('/home');
         } else{
             return redirect('/verify');
         }
@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['verified']], function () {
 
     Route::get('/home', 'HomeController@index');
+    Route::get('/search/{slot}','SearchController@search');
 
 
 });
