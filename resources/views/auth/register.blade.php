@@ -10,15 +10,94 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                        @include('common.error')
+
+
+                        <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
+                            <label for="first_name" class="col-md-4 control-label">First Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('first_name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('first_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                            <label for="last_name" class="col-md-4 control-label">Last Name</label>
+
+                            <div class="col-md-6">
+                                <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required autofocus>
+
+                                @if ($errors->has('last_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('last_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('birth_date') ? ' has-error' : '' }}">
+                            <label for="last_name" class="col-md-4 control-label">Birth date</label>
+
+                            <div class="col-md-6">
+                                <input id="last_name" type="date" class="form-control" name="birth_date" value="{{ old('birth_date') }}" required autofocus>
+
+                                @if ($errors->has('birth_date'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('birth_date') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                            <label for="gender" class="col-md-4 control-label">Gender</label>
+
+                            <div class="col-md-6">
+                                <select id="gender" type="text" class="form-control" name="gender" required autofocus>
+                                    <option {{ old('gender')==1?"selected":"" }} value="1">Male</option>
+                                    <option {{ old('gender')==0?"selected":"" }} value="0">Female</option>
+                                </select>
+
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('sexual_orientation') ? ' has-error' : '' }}">
+                            <label for="sexual_orientation" class="col-md-4 control-label">Sexual Orientation</label>
+
+                            <div class="col-md-6">
+                                <select id="sexual_orientation" class="form-control" name="sexual_orientation" required autofocus>
+                                    <option {{ old('sexual_orientation')==1?"selected":"" }} value="1">Male</option>
+                                    <option {{ old('sexual_orientation')==0?"selected":"" }} value="0">Female</option>
+                                </select>
+
+                                @if ($errors->has('sexual_orientation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('sexual_orientation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('phone_number') ? ' has-error' : '' }}">
+                            <label for="phone_number" class="col-md-4 control-label">Mobile Phone Number</label>
+
+                            <div class="col-md-6">
+                                <input id="phone_number" type="tel" class="form-control" name="phone_number" value="{{ old('phone_number') }}" required>
+
+                                @if ($errors->has('phone_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone_number') }}</strong>
                                     </span>
                                 @endif
                             </div>

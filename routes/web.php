@@ -12,9 +12,33 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        if(Auth::user()->isVerified()){
+            return view('home');
+        } else{
+            return redirect('/verify');
+        }
+    } else {
+        // not logged-in
+        return view('welcome');
+    }
 });
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => ['auth']], function () {
+
+    Route::get('/verify', 'UserController@verify');
+    Route::get('/verify/resend', 'UserController@resendSMS');
+    Route::post('/verify/', 'UserController@confirmSMS');
+
+
+});
+
+Route::group(['middleware' => ['verified']], function () {
+
+    Route::get('/home', 'HomeController@index');
+
+
+});
+
+

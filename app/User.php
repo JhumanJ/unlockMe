@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name', 'email', 'password','birth_date','sexual_orientation','phone_number','status'
+        'first_name','last_name', 'email', 'password','birth_date','sexual_orientation','phone_number','gender','status'
     ];
 
     /**
@@ -26,4 +26,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isVerified(){
+        return ($this->status>0);
+    }
 }
