@@ -10,6 +10,143 @@
 
 @section('content')
 
+    <div class="main-wrap fill">
+        <div class="row fill">
+
+            <div class="col-sm-offset-2 col-sm-8 col-xs-12" style="height: 90%;">
+                <div class="panel panel-info" style="height: 90%; border: 1px solid #ddd !important;-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05) !important;box-shadow: 0 1px 1px rgba(0,0,0,.05) !important; border-radius: 0px;">
+                    <!--background: linear-gradient(to bottom, white, #FF69B4);-->
+                    <div class="panel-body chatPlatformPos">
+                        <div id="messages" style="width: 100%; ">
+
+                            @foreach($messages as $message)
+                                @if($message->user_id==\Illuminate\Support\Facades\Auth::user()->id)
+                                    <div class="message-container me">
+                                        <span class="username"></span><span class="message">{{$message->content}}</span>
+                                    </div>
+                                @else
+                                    <div class="message-container notme">
+                                        <span class="username"></span><span class="message">{{$message->content}}</span>
+                                    </div>
+                                @endif
+                            @endforeach
+
+
+                        </div>
+                    </div>
+                    <div class="panel-footer" style="border: 1px solid #ddd !important;">
+                        <div class="input-group">
+                            <input id ="chat-input" class="form-control" type="text" placeholder="" autofocus/>
+
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#modal3"><i class="fa fa-unlock-alt" aria-hidden="true"></i></button>
+                                <button id="send" class="btn btn-info" type="submit">SEND</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal fade" role='dialog' aria-labelledby="modal3">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <div class="modal-title" style="margin-bottom: 30px;"><h1> My Secrets </h1>
+                    <b>Choose what to unlock and reveal to your match here</b>
+                    </div>
+
+                    <div class="modal-body" >
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">Name</p>
+                            <button id="btn1" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">Age</p>
+                            <button id="btn2" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">Do you have any phobias?</p>
+                            <button id="btn3" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                         </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">What is the best vacation that you took?</p>
+                            <button id="btn4" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">What is the worst lie you told your parents?</p>
+                            <button id="btn5" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">What is the strangest habbit that you've ever had?</p>
+                            <button id="btn6" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">What do you want to be known for?</p>
+                            <button id="btn7" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">What is the most stupid thing you've ever done for love?</p>
+                            <button id="btn8" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">If you could write a note to a younger self, what would you say in only two words?</p>
+                            <button id="btn9" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">What's an accomplishment you're really proud of?</p>
+                            <button id="btn10" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">Name five new things you would like to learn before you're forty.</p>
+                            <button id="btn11" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">What are your biggest pet peeves?</p>
+                            <button id="btn12" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">If one song were to describe your life, what song would it be?</p>
+                            <button id="btn13" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">If you could play a part in a movie what would it be?</p>
+                            <button id="btn14" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <p class="col-md-9" style="text-align: left;">What's the last mistake you made that you're sure you will probably make again?</p>
+                            <button id="btn15" type="button" class="btn btn-danger col-md-3" data-dismiss="modal" style="text-align: right"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Unlock</button>
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
 @endsection
 
 @section('js')
@@ -18,343 +155,486 @@
     <script src="//media.twiliocdn.com/sdk/rtc/js/ip-messaging/v0.10/twilio-ip-messaging.min.js"></script>
     <script type="application/javascript">
 
-        var twiliochat = (function() {
-            var tc = {};
+        $('#messages').scrollTop($('#messages')[0].scrollHeight);
 
-//            var GENERAL_CHANNEL_UNIQUE_NAME = 'general';
-//            var GENERAL_CHANNEL_NAME = 'General Channel';
-            var MESSAGES_HISTORY_LIMIT = 50;
+        // Get handle to the chat div
+        var $chatWindow = $('#messages');
 
-            var $channelList;
-            var $inputText;
-            var $usernameInput;
-            var $statusRow;
-            var $connectPanel;
-            var $newChannelInputRow;
-            var $newChannelInput;
-            var $typingRow;
-            var $typingPlaceholder;
+        // Manages the state of our access token we got from the server
+        var accessManager;
 
-            $(document).ready(function() {
-                tc.$messageList = $('#message-list');
-                $channelList = $('#channel-list');
-                $inputText = $('#input-text');
-                $usernameInput = $('#username-input');
-                $statusRow = $('#status-row');
-                $connectPanel = $('#connect-panel');
-                $newChannelInputRow = $('#new-channel-input-row');
-                $newChannelInput = $('#new-channel-input');
-                $typingRow = $('#typing-row');
-                $typingPlaceholder = $('#typing-placeholder');
-                $usernameInput.focus();
-                $usernameInput.on('keypress', handleUsernameInputKeypress);
-                $inputText.on('keypress', handleInputTextKeypress);
-                $newChannelInput.on('keypress', tc.handleNewChannelInputKeypress);
-                $('#connect-image').on('click', connectClientWithUsername);
-                $('#add-channel-image').on('click', showAddChannelInput);
-                $('#leave-span').on('click', disconnectClient);
-                $('#delete-channel-span').on('click', deleteCurrentChannel);
+        // Our interface to the IP Messaging service
+        var messagingClient;
+
+        var channel = "{{strval($match->id)}}";
+        var myChannel;
+
+        var username = {{\Illuminate\Support\Facades\Auth::user()->id}}
+
+        // Helper function to print info messages to the chat window
+        function print(infoMessage, asHtml) {
+            var $msg = $('<div class="info">');
+            if (asHtml) {
+                $msg.html(infoMessage);
+            } else {
+                $msg.text(infoMessage);
+            }
+            $chatWindow.append($msg);
+        }
+
+        // Helper function to print chat message to the chat window
+        function printMessage(fromUser, message) {
+
+            var $user = $('<span class="username">');
+            var $container = $('<div class="message-container">');
+            if (fromUser == username) {
+                //$user.addClass('me');
+                $container.addClass('me');
+            } else {
+                $container.addClass('notme');
+            }
+            var $message = $('<span class="message">').text(message);
+            $container.append($user).append($message);
+            $chatWindow.append($container);
+            $chatWindow.scrollTop($chatWindow[0].scrollHeight);
+
+        }
+
+        // Alert the user they have been assigned a random username
+        //print('Logging in...');
+
+        // Get an access token for the current user, passing a username (identity)
+        // and a device ID - for browser-based apps, we'll always just use the
+        // value "browser"
+        $.post('/api/token', {
+            identity: username,
+            device: 'browser'
+        }, function(data) {
+            // Alert the user they have been assigned a random username
+            username = data.identity;
+            // print('You have been assigned a random username of: '
+            //    + '<span class="me">' + username + '</span>', true);
+
+            // Initialize the IP messaging client
+            accessManager = new Twilio.AccessManager(data.token);
+            messagingClient = new Twilio.IPMessaging.Client(accessManager);
+
+            //connect to channel
+            var promise = messagingClient.getChannelByUniqueName(channel);
+            promise.then(function(channel) {
+                myChannel = channel;
+
+                console.log('Found channel:');
+                console.log(myChannel);
+                setupChannel();
+
+            });
+        });
+
+        // Set up channel after it has been found
+        function setupChannel() {
+            // Join the general channel
+            myChannel.join();
+            /*.then(function(channel) {
+
+             print('Joined channel as '
+             + '<span class="me">' + username + '</span>.', true);
+             });*/
+            console.log('Connected');
+            // Listen for new messages sent to the channel
+            myChannel.on('messageAdded', function(message) {
+                //document.getElementById("messages").innerHTML = "<div class='direct-chat-text'>" + message.body + "</div>"
+                printMessage(message.author, message.body);
+            });
+        }
+
+        // Send a new message to the general channel
+        var $input = $('#chat-input');
+        var $buttonSend = $('#send');
+
+        $buttonSend.click(function() {
+            sendMessage();
+        });
+
+        $input.on('keydown', function(e) {
+            if (e.keyCode == 13) {
+                sendMessage();
+            }
+        });
+
+        function sendMessage(){
+            myChannel.sendMessage($input.val())
+            console.log('testtt');
+            $.post('/api/chat/message/add', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                message_content: $input.val(),
+            });
+            $input.val('');
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+        }
+
+        $('#btn1').click(function(){
+
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 1,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
+                });
             });
 
-            function handleUsernameInputKeypress(event) {
-                if (event.keyCode === 13){
-                    connectClientWithUsername();
-                }
-            }
+        });
 
-            function handleInputTextKeypress(event) {
-                if (event.keyCode === 13) {
-                    tc.currentChannel.sendMessage($(this).val());
-                    event.preventDefault();
-                    $(this).val('');
-                }
-                else {
-                    notifyTyping();
-                }
-            }
+        $('#btn2').click(function(){
 
-            var notifyTyping = $.throttle(function() {
-                tc.currentChannel.typing();
-            }, 1000);
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 2,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
 
-            tc.handleNewChannelInputKeypress = function(event) {
-                if (event.keyCode === 13) {
-                    tc.messagingClient.createChannel({
-                        friendlyName: $newChannelInput.val()
-                    }).then(hideAddChannelInput);
-                    $(this).val('');
-                    event.preventDefault();
-                }
-            };
+            var answer;
 
-            function connectClientWithUsername() {
-                var usernameText = $usernameInput.val();
-                $usernameInput.val('');
-                if (usernameText == '') {
-                    alert('Username cannot be empty');
-                    return;
-                }
-                tc.username = usernameText;
-                fetchAccessToken(tc.username, connectMessagingClient);
-            }
-
-            function fetchAccessToken(username, handler) {
-                $.post('/token', {
-                    identity: {!! \Illuminate\Support\Facades\Auth::user()->id !!},
-                    device: 'browser'
-                }, function(data) {
-                    handler(data);
-                }, 'json');
-            }
-
-            function connectMessagingClient(tokenResponse) {
-                // Initialize the IP messaging client
-                tc.accessManager = new Twilio.AccessManager(tokenResponse.token);
-                tc.messagingClient = new Twilio.IPMessaging.Client(tc.accessManager);
-                updateConnectedUI();
-                tc.loadChannelList(tc.joinGeneralChannel);
-                tc.messagingClient.on('channelAdded', $.throttle(tc.loadChannelList));
-                tc.messagingClient.on('channelRemoved', $.throttle(tc.loadChannelList));
-                tc.messagingClient.on('tokenExpired', refreshToken);
-            }
-
-            function refreshToken() {
-                fetchAccessToken(tc.username, setNewToken);
-            }
-
-            function setNewToken(tokenResponse) {
-                tc.accessManager.updateToken(tokenResponse.token);
-            }
-
-            function updateConnectedUI() {
-                $('#username-span').text(tc.username);
-                $statusRow.addClass('connected').removeClass('disconnected');
-                tc.$messageList.addClass('connected').removeClass('disconnected');
-                $connectPanel.addClass('connected').removeClass('disconnected');
-                $inputText.addClass('with-shadow');
-                $typingRow.addClass('connected').removeClass('disconnected');
-            }
-
-            tc.loadChannelList = function(handler) {
-                if (tc.messagingClient === undefined) {
-                    console.log('Client is not initialized');
-                    return;
-                }
-
-                tc.messagingClient.getChannels().then(function(channels) {
-                    tc.channelArray = tc.sortChannelsByName(channels);
-                    $channelList.text('');
-                    tc.channelArray.forEach(addChannel);
-                    if (typeof handler === 'function') {
-                        handler();
-                    }
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
                 });
-            };
+            });
 
-            tc.joinGeneralChannel = function() {
-                console.log('Attempting to join "general" chat channel...');
-                if (!tc.generalChannel) {
-                    // If it doesn't exist, let's create it
-                    tc.messagingClient.createChannel({
-                        uniqueName: GENERAL_CHANNEL_UNIQUE_NAME,
-                        friendlyName: GENERAL_CHANNEL_NAME
-                    }).then(function(channel) {
-                        console.log('Created general channel');
-                        tc.generalChannel = channel;
-                        tc.loadChannelList(tc.joinGeneralChannel);
-                    });
-                }
-                else {
-                    console.log('Found general channel:');
-                    setupChannel(tc.generalChannel);
-                }
-            };
+        });
 
-            function setupChannel(channel) {
-                // Join the channel
-                channel.join().then(function(joinedChannel) {
-                    console.log('Joined channel ' + joinedChannel.friendlyName);
-                    leaveCurrentChannel();
-                    updateChannelUI(channel);
-                    tc.currentChannel = channel;
-                    tc.loadMessages();
-                    channel.on('messageAdded', tc.addMessageToList);
-                    channel.on('typingStarted', showTypingStarted);
-                    channel.on('typingEnded', hideTypingStarted);
-                    channel.on('memberJoined', notifyMemberJoined);
-                    channel.on('memberLeft', notifyMemberLeft);
-                    $inputText.prop('disabled', false).focus();
-                    tc.$messageList.text('');
+        $('#btn3').click(function(){
+
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 3,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
                 });
-            }
+            });
 
-            tc.loadMessages = function() {
-                tc.currentChannel.getMessages(MESSAGES_HISTORY_LIMIT).then(function (messages) {
-                    messages.forEach(tc.addMessageToList);
+        });
+
+        $('#btn4').click(function(){
+
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 4,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
                 });
-            };
+            });
 
-            function leaveCurrentChannel() {
-                if (tc.currentChannel) {
-                    tc.currentChannel.leave().then(function(leftChannel) {
-                        console.log('left ' + leftChannel.friendlyName);
-                        leftChannel.removeListener('messageAdded', tc.addMessageToList);
-                        leftChannel.removeListener('typingStarted', showTypingStarted);
-                        leftChannel.removeListener('typingEnded', hideTypingStarted);
-                        leftChannel.removeListener('memberJoined', notifyMemberJoined);
-                        leftChannel.removeListener('memberLeft', notifyMemberLeft);
-                    });
-                }
-            }
+        });
 
-            tc.addMessageToList = function(message) {
-                var rowDiv = $('<div>').addClass('row no-margin');
-                rowDiv.loadTemplate($('#message-template'), {
-                    username: message.author,
-                    date: dateFormatter.getTodayDate(message.timestamp),
-                    body: message.body
+        $('#btn5').click(function(){
+
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 5,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
                 });
-                if (message.author === tc.username) {
-                    rowDiv.addClass('own-message');
-                }
+            });
 
-                tc.$messageList.append(rowDiv);
-                scrollToMessageListBottom();
-            };
+        });
 
-            function notifyMemberJoined(member) {
-                notify(member.identity + ' joined the channel')
-            }
+        $('#btn6').click(function(){
 
-            function notifyMemberLeft(member) {
-                notify(member.identity + ' left the channel');
-            }
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 6,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
 
-            function notify(message) {
-                var row = $('<div>').addClass('col-md-12');
-                row.loadTemplate('#member-notification-template', {
-                    status: message
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
                 });
-                tc.$messageList.append(row);
-                scrollToMessageListBottom();
-            }
+            });
 
-            function showTypingStarted(member) {
-                $typingPlaceholder.text(member.identity + ' is typing...');
-            }
+        });
 
-            function hideTypingStarted(member) {
-                $typingPlaceholder.text('');
-            }
+        $('#btn7').click(function(){
 
-            function scrollToMessageListBottom() {
-                tc.$messageList.scrollTop(tc.$messageList[0].scrollHeight);
-            }
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 7,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
 
-            function updateChannelUI(selectedChannel) {
-                var channelElements = $('.channel-element').toArray();
-                var channelElement = channelElements.filter(function(element) {
-                    return $(element).data().sid === selectedChannel.sid;
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
                 });
-                channelElement = $(channelElement);
-                if (tc.currentChannelContainer === undefined && selectedChannel.uniqueName === GENERAL_CHANNEL_UNIQUE_NAME) {
-                    tc.currentChannelContainer = channelElement;
-                }
-                tc.currentChannelContainer.removeClass('selected-channel').addClass('unselected-channel');
-                channelElement.removeClass('unselected-channel').addClass('selected-channel');
-                tc.currentChannelContainer = channelElement;
-            }
+            });
 
-            function showAddChannelInput() {
-                if (tc.messagingClient) {
-                    $newChannelInputRow.addClass('showing').removeClass('not-showing');
-                    $channelList.addClass('showing').removeClass('not-showing');
-                    $newChannelInput.focus();
-                }
-            }
+        });
 
-            function hideAddChannelInput() {
-                $newChannelInputRow.addClass('not-showing').removeClass('showing');
-                $channelList.addClass('not-showing').removeClass('showing');
-                $newChannelInput.val('');
-            }
+        $('#btn8').click(function(){
 
-            function addChannel(channel) {
-                if (channel.uniqueName === GENERAL_CHANNEL_UNIQUE_NAME) {
-                    tc.generalChannel = channel;
-                }
-                var rowDiv = $('<div>').addClass('row channel-row');
-                rowDiv.loadTemplate('#channel-template', {
-                    channelName: channel.friendlyName
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 8,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
                 });
+            });
 
-                var channelP = rowDiv.children().children().first();
+        });
 
-                rowDiv.on('click', selectChannel);
-                channelP.data('sid', channel.sid);
-                if (tc.currentChannel && channel.sid === tc.currentChannel.sid) {
-                    tc.currentChannelContainer = channelP;
-                    channelP.addClass('selected-channel');
-                }
-                else {
-                    channelP.addClass('unselected-channel')
-                }
+        $('#btn9').click(function(){
 
-                $channelList.append(rowDiv);
-            }
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 9,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
 
-            function deleteCurrentChannel() {
-                if (!tc.currentChannel) {
-                    return;
-                }
-                if (tc.currentChannel.sid === tc.generalChannel.sid) {
-                    alert('You cannot delete the general channel');
-                    return;
-                }
-                tc.currentChannel.delete().then(function(channel) {
-                    console.log('channel: '+ channel.friendlyName + ' deleted');
-                    setupChannel(tc.generalChannel);
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
                 });
-            }
+            });
 
-            function selectChannel(event) {
-                var target = $(event.target);
-                var channelSid = target.data().sid;
-                var selectedChannel = tc.channelArray.filter(function(channel) {
-                    return channel.sid === channelSid;
-                })[0];
-                if (selectedChannel === tc.currentChannel) {
-                    return;
-                }
-                setupChannel(selectedChannel);
-            };
+        });
 
-            function disconnectClient() {
-                leaveCurrentChannel();
-                $channelList.text('');
-                tc.$messageList.text('');
-                channels = undefined;
-                $statusRow.addClass('disconnected').removeClass('connected');
-                tc.$messageList.addClass('disconnected').removeClass('connected');
-                $connectPanel.addClass('disconnected').removeClass('connected');
-                $inputText.removeClass('with-shadow');
-                $typingRow.addClass('disconnected').removeClass('connected');
-            }
+        $('#btn10').click(function(){
 
-            tc.sortChannelsByName = function(channels) {
-                return channels.sort(function(a, b) {
-                    if (a.friendlyName === GENERAL_CHANNEL_NAME) {
-                        return -1;
-                    }
-                    if (b.friendlyName === GENERAL_CHANNEL_NAME) {
-                        return 1;
-                    }
-                    return a.friendlyName.localeCompare(b.friendlyName);
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 10,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
                 });
-            };
+            });
 
-            return tc;
-        })();
+        });
+
+        $('#btn11').click(function(){
+
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 11,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
+                });
+            });
+
+        });
+
+        $('#btn12').click(function(){
+
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 12,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
+                });
+            });
+
+        });
+
+        $('#btn13').click(function(){
+
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 13,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/get/{{$match->id}}/13", function( data ) {
+                answer = data.answer;
+                console.log(answer);
+            });
+
+            var $msg = 'Your match has unlocked something new: '+ answer;
+            myChannel.sendMessage($msg);
+            $.post('/api/chat/message/add', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                message_content: $msg
+            });
+        });
+
+        $('#btn14').click(function(){
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 14,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
+                });
+            });
+
+        });
+
+        $('#btn15').click(function(){
+
+            $.post('/api/unlock', {
+                match_id: {{$match->id}},
+                user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                question_id: 15,
+            });
+            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+
+            var answer;
+
+            $.getJSON( "/answer/getmine/1", function( data ) {
+                answer = data.answer;
+                var msg = "Your match has unlocked something new: "+ answer;
+                myChannel.sendMessage(msg);
+                $.post('/api/chat/message/add', {
+                    match_id: {{$match->id}},
+                    user_id: {{\Illuminate\Support\Facades\Auth::user()->id}},
+                    message_content: msg
+                });
+            });
+        });
+
+
 
     </script>
 

@@ -65,4 +65,20 @@ class User extends Authenticatable
 
         return true;
     }
+
+    public function alreadyMathWith(){
+        $match = Match::where('user_id_1',$this->id)->get();
+        $match2 = Match::where('user_id_2',$this->id)->get();
+
+        $matchWith = [];
+        foreach($match as $mat) {
+            array_push($matchWith,$mat->user_id_2);
+        }
+        foreach($match2 as $mat) {
+            array_push($matchWith,$mat->user_id_1);
+        }
+
+        return $matchWith;
+
+    }
 }

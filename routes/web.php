@@ -36,11 +36,22 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['middleware' => ['verified']], function () {
 
+    Route::get('/questions', 'QuestionController@index');
+    Route::post('/questions', 'QuestionController@save');
+
+});
+
+Route::group(['middleware' => ['answered']], function () {
+
     Route::get('/home', 'HomeController@index');
     Route::get('/search/{slot}','SearchController@search');
     Route::get('/chat/{number}','HomeController@chat');
-    Route::get('/test','SearchController@test');
+    Route::get('/chat/delete/{slot}','MatchController@remove');
 
+    Route::get('/test','MatchController@test');
+
+    Route::get('/answer/get/{match_id}/{id}', 'QuestionController@getAnswer');
+    Route::get('/answer/getmine/{id}', 'QuestionController@getMyAnswer');
 
 });
 

@@ -7,10 +7,14 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddChannelsidToMatch' => $baseDir . '/database/migrations/2016_11_27_014923_add_channelsid_to_match.php',
+    'CreateAnswersTable' => $baseDir . '/database/migrations/2016_11_27_082055_create_answers_table.php',
     'CreateMatchTable' => $baseDir . '/database/migrations/2016_11_26_203050_create_match_table.php',
+    'CreateMessageTable' => $baseDir . '/database/migrations/2016_11_27_042232_create_message_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateQuestionTable' => $baseDir . '/database/migrations/2016_11_27_082044_create_question_table.php',
     'CreateSearchTable' => $baseDir . '/database/migrations/2016_11_26_203055_create_search_table.php',
     'CreateSmsVerificationTable' => $baseDir . '/database/migrations/2016_11_26_151101_create_sms_verification_table.php',
+    'CreateUnlockedTable' => $baseDir . '/database/migrations/2016_11_27_082103_create_unlocked_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

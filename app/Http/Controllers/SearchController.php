@@ -16,6 +16,7 @@ class SearchController extends Controller
 
 
         $user = $request->user();
+        $notIn = $user->alreadyMathWith();
         if ($user->slotFree($slot)!=true){
             return redirect('/')->with('error', 'It seems that there is already someone in this slot, or that we are already looking for someone...');
         }
@@ -26,6 +27,7 @@ class SearchController extends Controller
             $search = Search::where('user_sexual_orientation', 2)
                 ->where('user_sexual_orientation', $user->gender)
                 ->where('user_id','<>',$user->id)
+                ->whereNotIn('user_id', $notIn)
                 ->first();
 
         } elseif ($user->sexual_orientation==1){
@@ -34,6 +36,7 @@ class SearchController extends Controller
             $search = Search::where('user_gender', $user->oppositeSex())
                 ->whereIn('user_sexual_orientation', [1,2])
                 ->where('user_id','<>',$user->id)
+                ->whereNotIn('user_id', $notIn)
                 ->first();
 
         } else {
@@ -41,6 +44,7 @@ class SearchController extends Controller
             $search = Search::where('user_gender', $user->gender)
                 ->whereIn('user_sexual_orientation', [0,2])
                 ->where('user_id','<>',$user->id)
+                ->whereNotIn('user_id', $notIn)
                 ->first();
         }
 
@@ -77,9 +81,6 @@ class SearchController extends Controller
         }
     }
 
-    public function test(){
-        Twilio::deleteChannel('CH634695212945461abd3652a6c7337d94');
-    }
 
 
 

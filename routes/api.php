@@ -13,15 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
-
 Route::post(
     '/token',
     ['uses' => 'TokenController@generate', 'as' => 'token-generate']
 );
 
-Route::get('/test',function(){
-    return "ok";
-});
+
+
+Route::post('/chat/message/add', 'MatchController@addMessage');
+Route::post('/unlock', 'QuestionController@unlock');
+//Route::get('/getUnlock/{id}','QuestionController@getUnlock');
+Route::get('/answer/get/{match_id}/{id}', 'QuestionController@getAnswer');
+
+

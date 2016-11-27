@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 use App\Match;
 use App\Search;
+use App\Message;
 
 class HomeController extends Controller
 {
@@ -16,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('answered');
     }
 
     /**
@@ -36,6 +37,7 @@ class HomeController extends Controller
         $slot2_state = $user->slotFree(2);
         $slot3_state = $user->slotFree(3);
 
+
         if ($slot1_state!==1){
             $slot1 = $slot1_state;
         }
@@ -46,11 +48,19 @@ class HomeController extends Controller
             $slot3 = $slot3_state;
         }
 
+
         return view('home',['slot1' => $slot1,'slot2' => $slot2,'slot3' => $slot3]);
     }
 
     public function chat(Request $request, $number){
 
-        return view('chat.home');
+        $match = Match::where('user_id_1',$request->user()->id)->where('slot_1',$number)->first();
+        if ($match==null) {
+            $match = Match::where('user_id_2',$request->user()->id)->where('slot_2',$number)->first();
+        }
+
+        $messages = Message::where('match_id',$match->id)->get();
+
+        return view('chat.home',['match'=>$match,'messages'=>$messages]);
     }
 }

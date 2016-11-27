@@ -287,10 +287,14 @@ class ComposerStaticInitb8a54a3aa95145ac16b4fd6ab0d388a3
 
     public static $classMap = array (
         'AddChannelsidToMatch' => __DIR__ . '/../..' . '/database/migrations/2016_11_27_014923_add_channelsid_to_match.php',
+        'CreateAnswersTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_27_082055_create_answers_table.php',
         'CreateMatchTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_26_203050_create_match_table.php',
+        'CreateMessageTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_27_042232_create_message_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateQuestionTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_27_082044_create_question_table.php',
         'CreateSearchTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_26_203055_create_search_table.php',
         'CreateSmsVerificationTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_26_151101_create_sms_verification_table.php',
+        'CreateUnlockedTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_27_082103_create_unlocked_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
