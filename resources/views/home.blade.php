@@ -19,8 +19,8 @@
                             @elseif($slot1 == 'search')
                             <p>We are currently looking for someone that could fit your criterias!</p>
                             @else
-                            <p>{{$slot1->firstName}}</p>
-                            <a>Click here to chat!</a>
+                            <p>{{$slot1->first_name}}</p>
+                            <a href="{{url('/chat/1')}}">Click here to chat!</a>
                             @endif
                         </div>
                         <div class="col-sm-4 col-xs-12" style="background-color: lightgrey;border-radius: 10px;">
@@ -29,8 +29,8 @@
                             @elseif($slot2== "search")
                                 <p>We are currently looking for someone that could fit your criterias!</p>
                             @else
-                                <p>{{$slot2->firstName}}</p>
-                                <a>Click here to chat!</a>
+                                <p>{{$slot2->first_name}}</p>
+                                <a href="{{url('/chat/2')}}">Click here to chat!</a>
                             @endif                        </div>
                         <div class="col-sm-4 col-xs-12" style="background-color: lightgrey;border-radius: 10px;">
                             @if($slot3=="empty")
@@ -38,8 +38,8 @@
                             @elseif($slot3== "search")
                                 <p>We are currently looking for someone that could fit your criterias!</p>
                             @else
-                                <p>{{$slot3->firstName}}</p>
-                                <a>Click here to chat!</a>
+                                <p>{{$slot3->first_name}}</p>
+                                <a href="{{url('/chat/3')}}">Click here to chat!</a>
                             @endif
                         </div>
                     </div>

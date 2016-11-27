@@ -286,6 +286,7 @@ class ComposerStaticInitb8a54a3aa95145ac16b4fd6ab0d388a3
     );
 
     public static $classMap = array (
+        'AddChannelsidToMatch' => __DIR__ . '/../..' . '/database/migrations/2016_11_27_014923_add_channelsid_to_match.php',
         'CreateMatchTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_26_203050_create_match_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateSearchTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_26_203055_create_search_table.php',

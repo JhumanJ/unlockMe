@@ -38,6 +38,8 @@ Route::group(['middleware' => ['verified']], function () {
 
     Route::get('/home', 'HomeController@index');
     Route::get('/search/{slot}','SearchController@search');
+    Route::get('/chat/{number}','HomeController@chat');
+    Route::get('/test','SearchController@test');
 
 
 });

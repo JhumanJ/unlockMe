@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddChannelsidToMatch' => $baseDir . '/database/migrations/2016_11_27_014923_add_channelsid_to_match.php',
     'CreateMatchTable' => $baseDir . '/database/migrations/2016_11_26_203050_create_match_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateSearchTable' => $baseDir . '/database/migrations/2016_11_26_203055_create_search_table.php',

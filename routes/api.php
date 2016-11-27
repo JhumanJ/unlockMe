@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::post(
+    '/token',
+    ['uses' => 'TokenController@generate', 'as' => 'token-generate']
+);
+
+Route::get('/test',function(){
+    return "ok";
+});

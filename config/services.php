@@ -34,5 +34,11 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'twilio'=>[
+        'accountSid' => 'AC2c000643ec0e654e7e66be3b22e29dc5',
+        'apiKey'    => 'SK726a13dee646d09257cee58974a09bfc',
+        'apiSecret' => '7paA1TH7G2LePl0NSO3MLpu3YKJ8Rxtl',
+        'ipmServiceSid' => 'IS2d04a71e530948b0a6d30c316b64ae9a',
+    ],
 
 ];

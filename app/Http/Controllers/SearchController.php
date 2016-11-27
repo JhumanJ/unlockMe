@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Search;
 use Illuminate\Support\Facades\DB;
 use App\Match;
+use App\Twilio;
 
 
 class SearchController extends Controller
@@ -37,13 +38,10 @@ class SearchController extends Controller
 
         } else {
             //Gay
-
             $search = Search::where('user_gender', $user->gender)
-                ->whereIn('user_sexual_orientation', 0)
+                ->whereIn('user_sexual_orientation', [0,2])
                 ->where('user_id','<>',$user->id)
                 ->first();
-
-
         }
 
         if ($search===null){
@@ -66,13 +64,24 @@ class SearchController extends Controller
             $match->user_id_2 = $user->id;
             $match->slot_2 = $slot;
             $match->save();
+            $match->channel_sid = Twilio::createChannel($match);
+            $match->save();
+
 
             $search->delete();
+
+            //create tchat room
 
             return redirect('/')->with('status', 'Congratulations! You have a new match!');
 
         }
     }
+
+    public function test(){
+        Twilio::deleteChannel('CH634695212945461abd3652a6c7337d94');
+    }
+
+
 
 
 }

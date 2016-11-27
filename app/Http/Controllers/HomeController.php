@@ -48,4 +48,9 @@ class HomeController extends Controller
 
         return view('home',['slot1' => $slot1,'slot2' => $slot2,'slot3' => $slot3]);
     }
+
+    public function chat(Request $request, $number){
+
+        return view('chat.home');
+    }
 }

@@ -168,6 +168,8 @@ return [
          */
 
         //
+        App\Providers\TwilioAccessTokenProvider::class,
+
 
         /*
          * Application Service Providers...
